@@ -25,6 +25,17 @@ repositories {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.0-m02'
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+
+	//Cucumber dependencies
+	testCompile('org.seleniumhq.selenium:selenium-java:2.47.1')
+	testCompile('info.cukes:cucumber-core:1.2.5')
+	testCompile('info.cukes:cucumber-html:0.2.6')
+	testCompile('info.cukes:cucumber-java:1.2.5')
+	testCompile('info.cukes:cucumber-junit:1.2.5')
+	testCompile('info.cukes:cucumber-jvm-deps:1.0.3')
+	testCompile('info.cukes:cucumber-spring:1.2.5')
+	testCompile('info.cukes:gherkin:2.12.2')
 }

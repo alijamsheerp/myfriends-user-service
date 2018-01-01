@@ -12,8 +12,8 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 
-	public void save(User n) {
-		userRepository.save(n);
+	public void save(User user) {
+		userRepository.save(user);
 		
 	}
 
@@ -21,4 +21,8 @@ public class UserService {
 		return userRepository.findAll();
 	}
 
+	public User getUser(String email){
+		
+		return userRepository.findOne(email);
+	}
 }
