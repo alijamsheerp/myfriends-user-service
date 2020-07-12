@@ -1,41 +1,40 @@
-buildscript {
-	ext {
-		springBootVersion = '1.5.7.RELEASE'
-	}
-	repositories {
-		mavenCentral()
-	}
-	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-	}
+plugins {
+	id 'org.springframework.boot' version '2.3.1.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
 }
 
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
-
+group = 'com.myfriends.userservice'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 1.8
+sourceCompatibility = '1.8'
 
 repositories {
 	mavenCentral()
 }
 
+test {
+	useJUnitPlatform()
+}
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.0-m02'
+	implementation('org.springframework.boot:spring-boot-starter-web')
+	implementation('org.springframework.boot:spring-boot-starter-security')
+	implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+	implementation group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.0-m02'
+
 	runtime('mysql:mysql-connector-java')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
 
 	//Cucumber dependencies
-	testCompile('org.seleniumhq.selenium:selenium-java:2.47.1')
-	testCompile('info.cukes:cucumber-core:1.2.5')
-	testCompile('info.cukes:cucumber-html:0.2.6')
-	testCompile('info.cukes:cucumber-java:1.2.5')
-	testCompile('info.cukes:cucumber-junit:1.2.5')
-	testCompile('info.cukes:cucumber-jvm-deps:1.0.3')
-	testCompile('info.cukes:cucumber-spring:1.2.5')
-	testCompile('info.cukes:gherkin:2.12.2')
+	testImplementation('org.seleniumhq.selenium:selenium-java:2.47.1')
+	testImplementation('info.cukes:cucumber-core:1.2.5')
+	testImplementation('info.cukes:cucumber-html:0.2.6')
+	testImplementation('info.cukes:cucumber-java:1.2.5')
+	testImplementation('info.cukes:cucumber-junit:1.2.5')
+	testImplementation('info.cukes:cucumber-jvm-deps:1.0.3')
+	testImplementation('info.cukes:cucumber-spring:1.2.5')
+	testImplementation('info.cukes:gherkin:2.12.2')
 }

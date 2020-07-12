@@ -12,7 +12,7 @@ import com.myfriends.userservice.model.User;
 import com.myfriends.userservice.services.UserService;
 
 @RestController
-@RequestMapping(path="/myfriends")
+@RequestMapping(path="/v1")
 public class UserController {
 
 	@Autowired
